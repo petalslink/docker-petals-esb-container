@@ -2,8 +2,8 @@
 
 # Update the host name in the topology.xml file
 # (otherwise, JMX connections will not work from the outside).
-#HOST=`hostname`
-#sed -i "s/<tns:host>.*<\/tns:host>/<tns:host>${HOST}<\/tns:host>/ig" /opt/petals-esb/conf/topology.xml
+HOST=`hostname -i`
+sed -i "s/<tns:host>.*<\/tns:host>/<tns:host>${HOST}<\/tns:host>/ig" /opt/petals-esb/conf/topology.xml
 
 # We also need to force a specific port for RMI.
 # See http://ptmccarthy.github.io/2014/07/24/remote-jmx-with-docker/
