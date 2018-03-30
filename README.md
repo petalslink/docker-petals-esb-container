@@ -5,7 +5,6 @@ A Petals node is a member of Petals domain / topology.
 It is an instance of a Petals server that may interact with other ones (depending on its configuration).
 
 > For the moment, this image targets a stand-alone instance.  
-> And JMX connections do not work outside the container.
 
 
 ## Launch a container from this image
@@ -41,8 +40,11 @@ To test the image is correct, check the JMX connection...
 docker logs petals
 
 # Launch the JConsole
-# (if credentials are required: petals/petals).
-jconsole service:jmx:rmi:///jndi/rmi://127.0.0.1:7700/PetalsJMX &
+jconsole &
+
+# Type in the remote URL: service:jmx:rmi:///jndi/rmi://localhost:7700/PetalsJMX
+# User/password: petals/petals
+# If asked, click the "insecure connection" button.
 ```
 
 The example shows how to get the last version.  
@@ -122,7 +124,7 @@ Such images should not be shared on Petals's official repository.
 
 ## Supported Docker versions
 
-This image is officially supported on Docker version 1.9.0.  
+This image is officially supported on Docker version 1.9.0 and higher.  
 Please see [the Docker installation documentation](https://docs.docker.com/install/)
 for details on how to upgrade your Docker daemon.
 
