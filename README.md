@@ -11,10 +11,10 @@ It is an instance of a Petals server that may interact with other ones (dependin
 
 ```properties
 # Download the image
-docker pull petalslink/petals-esb-container:latest
+docker pull petals/petals-esb-container:latest
 
 # Start in detached mode
-docker run -d -p 7700:7700 -p 7800:7800 --name petals petalslink/petals-esb-container:latest
+docker run -d -p 7700:7700 -p 7800:7800 --name petals petals/petals-esb-container:latest
 
 # Verify the container was launched
 docker ps
@@ -49,7 +49,7 @@ jconsole &
 
 The example shows how to get the last version.  
 You can obviously change the version. Each Petals container version has its own image.
-Versions match. As an example, to get Petals 5.1.0, just type in `docker pull petalslink/petals-esb-container:5.1.0`.
+Versions match. As an example, to get Petals 5.1.0, just type in `docker pull petals/petals-esb-container:5.1.0`.
 
 
 ## Warning
@@ -62,7 +62,7 @@ Versions match. As an example, to get Petals 5.1.0, just type in `docker pull pe
 Example: let's assume you want to deploy the SOAP BC (a Petals component that allows to expose ESB services
 as web services, and that also allows to invoke SOAP services). This component launches a web server on the 8080
 port (by default). If you plan to deploy it inside a Dockerized Petals container, the container should have been
-launched with `docker run -d -p 7700:7700 -p 7800:7800 -p 8080:8080 --name petals petalslink/petals-esb-container:latest`.
+launched with `docker run -d -p 7700:7700 -p 7800:7800 -p 8080:8080 --name petals petals/petals-esb-container:latest`.
 
 If you launched the container without exposing the 8080 port, you would have to launch a new container and forget / drop
 the old one. From this point of view, Petals and Docker work differently. You will find the same issue with all the ESB.
@@ -94,8 +94,8 @@ The example is quite simple to understand.
 ```
 docker build \
 		--build-arg PETALS_VERSION=5.1.0 \
-		-t petalslink/petals-esb-container:latest \
-		-t petalslink/petals-esb-container:5.1.0 \
+		-t petals/petals-esb-container:latest \
+		-t petals/petals-esb-container:5.1.0 \
 		.
 ```
 
@@ -115,7 +115,7 @@ You can then launch the build process with...
 docker build \
 		--build-arg PETALS_VERSION=5.2.0-SNAPSHOT \
 		--build-arg MAVEN_POLICY=snapshots \
-		-t petalslink/petals-esb-container:5.2.0-SNAPSHOT \
+		-t petals/petals-esb-container:5.2.0-SNAPSHOT \
 		.
 ```
 
@@ -124,7 +124,7 @@ Such images should not be shared on Petals's official repository.
 
 ## Publish the image on Docker Hub
 
-This section is obviously reserved to those that have access to the Petalslink organization.  
+This section is obviously reserved to those that have access to the petals organization.  
 **It is assumed you already built the image locally and tested it.**
 
 ```properties
@@ -137,8 +137,8 @@ PETALS_VERSION="5.1.0"
 docker login -u=${DOCKER_HUB_USER} -p=${DOCKER_HUB_PWD}
 
 # Push the image
-docker push petalslink/petals-esb-container:${PETALS_VERSION}
-docker push petalslink/petals-esb-container:latest
+docker push petals/petals-esb-container:${PETALS_VERSION}
+docker push petals/petals-esb-container:latest
 
 # Log out
 docker logout
@@ -163,5 +163,5 @@ These images are licensed under the terms of the [LGPL 2.1](https://www.gnu.org/
 
 ## Documentation
 
-Documentation for Petals ESB can be found on [its wiki](https://doc.petalslink.com).  
+Documentation for Petals ESB can be found on [its wiki](https://doc.petals.com).  
 You can also visit [its official web site](http://petals.ow2.org).
