@@ -41,7 +41,7 @@ To test the image is correct, check the JMX connection...
 docker logs petals
 
 # Launch the JConsole
-# (if credentials re required: petals/petals).
+# (if credentials are required: petals/petals).
 jconsole service:jmx:rmi:///jndi/rmi://127.0.0.1:7700/PetalsJMX &
 ```
 
