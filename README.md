@@ -29,7 +29,7 @@ sudo lsof -i :7700
 docker inspect petals
 
 # Introspect the container
-docker exec -ti petals /bin/bash
+docker exec -ti petals /bin/sh
 ```
 
 Internal ports (7700 for JMX and 7800 for message transport) are here exposed on the same ports on the host system.  
